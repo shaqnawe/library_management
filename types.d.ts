@@ -14,4 +14,10 @@ interface Book {
     isLoanedBook?: boolean;
 }
 
-// type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide"
+interface AuthCredentials {
+    fullName: string;
+    email: string;
+    password: string;
+    universityId: number;
+    universityCard: string;
+}

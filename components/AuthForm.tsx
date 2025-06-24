@@ -23,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
-import FileUpload from "./FileUpload";
+import ImageUpload from "./ImageUpload";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -45,6 +45,7 @@ const AuthForm = <T extends FieldValues>({
     const isSignIn = type === "SIGN_IN";
 
     const form: UseFormReturn<T> = useForm({
+        // @ts-ignore
         resolver: zodResolver(schema),
         defaultValues: defaultValues as DefaultValues<T>,
     });
@@ -60,7 +61,6 @@ const AuthForm = <T extends FieldValues>({
                         : "You have successfully signed up.",
                 }
             );
-
             router.push("/");
         } else {
             toast(
@@ -97,7 +97,7 @@ const AuthForm = <T extends FieldValues>({
                                     </FormLabel>
                                     <FormControl>
                                         {field.name === "universityCard" ? (
-                                            <FileUpload
+                                            <ImageUpload
                                                 type="image"
                                                 accept="image/*"
                                                 placeholder="Upload your ID"
